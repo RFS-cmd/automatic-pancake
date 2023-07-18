@@ -34,8 +34,8 @@ function Library:CreateWindow(windowname,windowinfo)
     fu8rj82n.ResetOnSpawn = false
     
     Frame.Parent = fu8rj82n
-    Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 256)
-    Frame.BorderColor3 = Color3.fromRGB(20, 20, 256)
+    Frame.BackgroundColor3 = Color3.fromRGB(181, 186, 208)
+    Frame.BorderColor3 = Color3.fromRGB(181, 186, 208)
     Frame.BorderSizePixel = 0
     Frame.Position = UDim2.new(0.289808273, 0, 0.313227266, 0)
     Frame.Size = UDim2.new(0, 432, 0, 285)
@@ -45,8 +45,8 @@ function Library:CreateWindow(windowname,windowinfo)
     
     DashBoard.Name = "DashBoard"
     DashBoard.Parent = Frame
-    DashBoard.BackgroundColor3 = Color3.fromRGB(15, 255, 15)
-    DashBoard.BorderColor3 = Color3.fromRGB(15, 255, 15)
+    DashBoard.BackgroundColor3 = Color3.fromRGB(181, 186, 208)
+    DashBoard.BorderColor3 = Color3.fromRGB(170, 190, 229)
     DashBoard.Position = UDim2.new(0.0185185205, 0, 0.16842106, 0)
     DashBoard.Size = UDim2.new(0, 107, 0, 223)
     
