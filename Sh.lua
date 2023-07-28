@@ -692,129 +692,117 @@ function lib:Window(text, preset, closebind)
             Tab.CanvasSize = UDim2.new(0, 0, 0, TabLayout.AbsoluteContentSize.Y)
         end
         function tabcontent:Slider(text, min, max, start, callback)
-            local dragging = false
-            local Slider = Instance.new("TextButton")
-            local SliderCorner = Instance.new("UICorner")
-            local SliderTitle = Instance.new("TextLabel")
-            local SliderValue = Instance.new("TextBox")
-            local SlideFrame = Instance.new("Frame")
-            local CurrentValueFrame = Instance.new("Frame")
-            local SlideCircle = Instance.new("ImageButton")
+    local dragging = false
+    local Slider = Instance.new("TextButton")
+    local SliderCorner = Instance.new("UICorner")
+    local SliderTitle = Instance.new("TextLabel")
+    local SliderValue = Instance.new("TextBox")
+    local SlideFrame = Instance.new("Frame")
+    local CurrentValueFrame = Instance.new("Frame")
+    local SlideCircle = Instance.new("ImageButton")
 
-            Slider.Name = "Slider"
-            Slider.Parent = Tab
-            Slider.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
-            Slider.Position = UDim2.new(-0.48035714, 0, -0.570532918, 0)
-            Slider.Size = UDim2.new(0, 363, 0, 60)
-            Slider.AutoButtonColor = false
-            Slider.Font = Enum.Font.SourceSans
-            Slider.Text = ""
-            Slider.TextColor3 = Color3.fromRGB(0, 0, 0)
-            Slider.TextSize = 14.000
+    Slider.Name = "Slider"
+    Slider.Parent = Tab
+    Slider.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+    Slider.Position = UDim2.new(-0.48035714, 0, -0.570532918, 0)
+    Slider.Size = UDim2.new(0, 363, 0, 60)
+    Slider.AutoButtonColor = false
+    Slider.Font = Enum.Font.SourceSans
+    Slider.Text = ""
+    Slider.TextColor3 = Color3.fromRGB(0, 0, 0)
+    Slider.TextSize = 14.000
 
-            SliderCorner.CornerRadius = UDim.new(0, 5)
-            SliderCorner.Name = "SliderCorner"
-            SliderCorner.Parent = Slider
+    SliderCorner.CornerRadius = UDim.new(0, 5)
+    SliderCorner.Name = "SliderCorner"
+    SliderCorner.Parent = Slider
 
-            SliderTitle.Name = "SliderTitle"
-            SliderTitle.Parent = Slider
-            SliderTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            SliderTitle.BackgroundTransparency = 1.000
-            SliderTitle.Position = UDim2.new(0.0358126722, 0, 0, 0)
-            SliderTitle.Size = UDim2.new(0, 187, 0, 42)
-            SliderTitle.Font = Enum.Font.Gotham
-            SliderTitle.Text = text
-            SliderTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
-            SliderTitle.TextSize = 14.000
-            SliderTitle.TextXAlignment = Enum.TextXAlignment.Left
+    SliderTitle.Name = "SliderTitle"
+    SliderTitle.Parent = Slider
+    SliderTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    SliderTitle.BackgroundTransparency = 1.000
+    SliderTitle.Position = UDim2.new(0.0358126722, 0, 0, 0)
+    SliderTitle.Size = UDim2.new(0, 187, 0, 42)
+    SliderTitle.Font = Enum.Font.Gotham
+    SliderTitle.Text = text
+    SliderTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+    SliderTitle.TextSize = 14.000
+    SliderTitle.TextXAlignment = Enum.TextXAlignment.Left
 
-            SliderValue.Name = "SliderValue"
-            SliderValue.Parent = Slider
-            SliderValue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            SliderValue.BackgroundTransparency = 1.000
-            SliderValue.Position = UDim2.new(0.0358126722, 0, 0, 0)
-            SliderValue.Size = UDim2.new(0, 335, 0, 42)
-            SliderValue.Font = Enum.Font.Gotham
-            SliderValue.Text = tostring(start and math.floor((start / max) * (max - min) + min) or 0)
-            SliderValue.TextColor3 = Color3.fromRGB(255, 255, 255)
-            SliderValue.TextSize = 14.000
-            SliderValue.TextXAlignment = Enum.TextXAlignment.Right
-
-            SlideFrame.Name = "SlideFrame"
-            SlideFrame.Parent = Slider
-            SlideFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-            SlideFrame.BorderSizePixel = 0
-            SlideFrame.Position = UDim2.new(0.0342647657, 0, 0.686091602, 0)
-            SlideFrame.Size = UDim2.new(0, 335, 0, 3)
-
-            CurrentValueFrame.Name = "CurrentValueFrame"
-            CurrentValueFrame.Parent = SlideFrame
-            CurrentValueFrame.BackgroundColor3 = PresetColor
-            CurrentValueFrame.BorderSizePixel = 0
-            CurrentValueFrame.Size = UDim2.new((start or 0) / max, 0, 0, 3)
-
-            SlideCircle.Name = "SlideCircle"
-            SlideCircle.Parent = SlideFrame
-            SlideCircle.BackgroundColor3 = PresetColor
-            SlideCircle.BackgroundTransparency = 1.000
-            SlideCircle.Position = UDim2.new((start or 0) / max, -6, -1.30499995, 0)
-            SlideCircle.Size = UDim2.new(0, 11, 0, 11)
-            SlideCircle.Image = "rbxassetid://3570695787"
-            SlideCircle.ImageColor3 = PresetColor
-
-            coroutine.wrap(
-                function()
-                    while wait() do
-                        CurrentValueFrame.BackgroundColor3 = PresetColor
-                        SlideCircle.ImageColor3 = PresetColor
-                    end
-                end
-            )()
-
-            local function move(input)
-                local pos =
-                    UDim2.new(
-                    math.clamp((input.Position.X - SlideFrame.AbsolutePosition.X) / SlideFrame.AbsoluteSize.X, 0, 1),
-                    -6,
-                    -1.30499995,
-                    0
-                )
-                local pos1 =
-                    UDim2.new(
-                    math.clamp((input.Position.X - SlideFrame.AbsolutePosition.X) / SlideFrame.AbsoluteSize.X, 0, 1),
-                    0,
-                    0,
-                    3
-                )
-                CurrentValueFrame:TweenSize(pos1, "Out", "Sine", 0.1, true)
-                SlideCircle:TweenPosition(pos, "Out", "Sine", 0.1, true)
-                local value = math.floor(((pos.X.Scale * max) / max) * (max - min) + min)
-                SliderValue.Text = tostring(value)
-                pcall(callback, value)
-            end
-            SlideCircle.InputBegan:Connect(
-                function(input)
-                    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-                        dragging = true
-                    end
-                end
-            )
-            SlideCircle.InputEnded:Connect(
-                function(input)
-                    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-                        dragging = false
-                    end
-                end
-            )
-            game:GetService("UserInputService").InputChanged:Connect(
-                function(input)
-                    if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
-                        move(input)
-                    end
-                end
-            )
-            Tab.CanvasSize = UDim2.new(0, 0, 0, TabLayout.AbsoluteContentSize.Y)
+    SliderValue.Name = "SliderValue"
+    SliderValue.Parent = Slider
+    SliderValue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    SliderValue.BackgroundTransparency = 1.000
+    SliderValue.Position = UDim2.new(0.0358126722, 0, 0, 0)
+    SliderValue.Size = UDim2.new(0, 335, 0, 42)
+    SliderValue.Font = Enum.Font.Gotham
+    SliderValue.Text = tostring(start and math.floor((start / max) * (max - min) + min) or 0)
+    SliderValue.TextColor3 = Color3.fromRGB(255, 255, 255)
+    SliderValue.TextSize = 14.000
+    SliderValue.TextXAlignment = Enum.TextXAlignment.Right
+    SliderValue.FocusLost:Connect(function()
+        local value = tonumber(SliderValue.Text)
+        if value then
+            value = math.clamp(value, min, max)
+            local pos = (value - min) / (max - min)
+            CurrentValueFrame:TweenSize(UDim2.new(pos, 0, 0, 3), "Out", "Sine", 0.1, true)
+            SlideCircle:TweenPosition(UDim2.new(pos, -6, -1.30499995, 0), "Out", "Sine", 0.1, true)
+            SliderValue.Text = tostring(value)
+            pcall(callback, value)
+        else
+            SliderValue.Text = tostring(math.floor((start or 0) / max * (max - min) + min))
         end
+    end)
+
+    SlideFrame.Name = "SlideFrame"
+    SlideFrame.Parent = Slider
+    SlideFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    SlideFrame.BorderSizePixel = 0
+    SlideFrame.Position = UDim2.new(0.0342647657, 0, 0.686091602, 0)
+    SlideFrame.Size = UDim2.new(0, 335, 0, 3)
+
+    CurrentValueFrame.Name = "CurrentValueFrame"
+    CurrentValueFrame.Parent = SlideFrame
+    CurrentValueFrame.BackgroundColor3 = PresetColor
+    CurrentValueFrame.BorderSizePixel = 0
+    CurrentValueFrame.Size = UDim2.new((start or 0) / max, 0, 0, 3)
+
+    SlideCircle.Name = "SlideCircle"
+    SlideCircle.Parent = SlideFrame
+    SlideCircle.BackgroundColor3 = PresetColor
+    SlideCircle.BackgroundTransparency = 1
+    SlideCircle.BorderSizePixel = 0
+    SlideCircle.Position = UDim2.new((start or 0) / max, -6, -1.30499995, 0)
+    SlideCircle.Size = UDim2.new(0, 12, 0, 12)
+    SlideCircle.Image = "http://www.roblox.com/asset/?id=6233968988"
+
+    SlideCircle.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragging = true
+        end
+    end)
+
+    SlideCircle.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragging = false
+        end
+    end)
+
+    UserInputService.InputChanged:Connect(function(input)
+        if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+            local relativePos = input.Position.X - SlideFrame.AbsolutePosition.X
+            local pos = math.clamp(relativePos / SlideFrame.AbsoluteSize.X, 0, 1)
+            local value = math.floor(pos * (max - min) + min)
+            CurrentValueFrame.Size = UDim2.new(pos, 0, 0, 3)
+            SlideCircle.Position = UDim2.new(pos, -6, -1.30499995, 0)
+            SliderValue.Text = tostring(value)
+            pcall(callback, value)
+        end
+    end)
+
+    Tab.CanvasSize = UDim2.new(0, 0, 0, Tab.CanvasSize.Y.Offset + 60)
+
+    return Slider
+end
         function tabcontent:Dropdown(text, list, callback)
             local droptog = false
             local framesize = 0
