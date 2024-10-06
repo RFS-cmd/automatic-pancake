@@ -428,7 +428,7 @@ end)
 
 local function ButtonFrame(Instance, Title, Description, HolderSize)
 	local TitleL = InsertTheme(Create("TextLabel", {
-		Font = Enum.Font.GothamMedium,
+		Font = Enum.Font.RobotoMono,
 		TextColor3 = Theme["Color Text"],
 		Size = UDim2.new(1, -20),
 		AutomaticSize = "Y",
@@ -443,7 +443,7 @@ local function ButtonFrame(Instance, Title, Description, HolderSize)
 	}), "Text")
 	
 	local DescL = InsertTheme(Create("TextLabel", {
-		Font = Enum.Font.Gotham,
+		Font = Enum.Font.RobotoMono,
 		TextColor3 = Theme["Color Dark Text"],
 		Size = UDim2.new(1, -20),
 		AutomaticSize = "Y",
@@ -633,7 +633,7 @@ function redzlib:MakeWindow(Configs)
 		TextSize = 12,
 		TextColor3 = Theme["Color Text"],
 		BackgroundTransparency = 1,
-		Font = Enum.Font.GothamMedium,
+		Font = Enum.Font.RobotoMono,
 		Name = "Title"
 	}, {
 		InsertTheme(Create("TextLabel", {
@@ -647,7 +647,7 @@ function redzlib:MakeWindow(Configs)
 			TextXAlignment = "Left",
 			TextYAlignment = "Bottom",
 			TextSize = 8,
-			Font = Enum.Font.Gotham,
+			Font = Enum.Font.RobotoMono,
 			Name = "SubTitle"
 		}), "DarkText")
 	}), "Text")
@@ -842,7 +842,7 @@ function redzlib:MakeWindow(Configs)
 			AnchorPoint = Vector2.new(0.5, 0.5)
 		}, {
 			InsertTheme(Create("TextLabel", {
-				Font = Enum.Font.GothamBold,
+				Font = Enum.Font.RobotoMono,
 				Size = UDim2.new(1, 0, 0, 20),
 				Text = DTitle,
 				TextXAlignment = "Left",
@@ -852,7 +852,7 @@ function redzlib:MakeWindow(Configs)
 				BackgroundTransparency = 1
 			}), "Text"),
 			InsertTheme(Create("TextLabel", {
-				Font = Enum.Font.GothamMedium,
+				Font = Enum.Font.RobotoMono,
 				Size = UDim2.new(1, -25),
 				AutomaticSize = "Y",
 				Text = DText,
@@ -905,7 +905,7 @@ function redzlib:MakeWindow(Configs)
 			Make("Corner", Button)
 			SetProps(Button, {
 				Text = Name,
-				Font = Enum.Font.GothamBold,
+				Font = Enum.Font.RobotoMono,
 				TextColor3 = Theme["Color Text"],
 				TextSize = 12
 			})
@@ -960,7 +960,7 @@ function redzlib:MakeWindow(Configs)
 			Size = UDim2.new(1, TIcon and -25 or -15, 1),
 			Position = UDim2.fromOffset(TIcon and 25 or 15),
 			BackgroundTransparency = 1,
-			Font = Enum.Font.GothamMedium,
+			Font = Enum.Font.RobotoMono,
 			Text = TName,
 			TextColor3 = Theme["Color Text"],
 			TextSize = 10,
@@ -1067,7 +1067,7 @@ function redzlib:MakeWindow(Configs)
 			})
 			
 			local SectionLabel = InsertTheme(Create("TextLabel", SectionFrame, {
-				Font = Enum.Font.GothamBold,
+				Font = Enum.Font.RobotoMono,
 				Text = SectionName,
 				TextColor3 = Theme["Color Text"],
 				Size = UDim2.new(1, -25, 1, 0),
@@ -1252,7 +1252,7 @@ function redzlib:MakeWindow(Configs)
 				AnchorPoint = Vector2.new(0.5, 0.5),
 				Position = UDim2.new(0.5, 0, 0.5, 0),
 				BackgroundTransparency = 1,
-				Font = Enum.Font.GothamBold,
+				Font = Enum.Font.RobotoMono,
 				TextScaled = true,
 				TextColor3 = Theme["Color Text"],
 				Text = "..."
@@ -1472,7 +1472,7 @@ function redzlib:MakeWindow(Configs)
 						Position = UDim2.new(0, 10),
 						Text = Name,
 						TextColor3 = Theme["Color Text"],
-						Font = Enum.Font.GothamBold,
+						Font = Enum.Font.RobotoMono,
 						TextXAlignment = "Left",
 						BackgroundTransparency = 1,
 						TextTransparency = 0.4
@@ -1733,7 +1733,7 @@ function redzlib:MakeWindow(Configs)
 				AnchorPoint = Vector2.new(0.5, 0.5),
 				Position = UDim2.new(0.5, 0, 0.5, 0),
 				BackgroundTransparency = 1,
-				Font = Enum.Font.GothamBold,
+				Font = Enum.Font.RobotoMono,
 				TextScaled = true,
 				TextColor3 = Theme["Color Text"],
 				ClearTextOnFocus = TClearText,
@@ -1789,7 +1789,7 @@ function redzlib:MakeWindow(Configs)
 				Size = UDim2.new(1, 0, 0, 15),
 				Position = UDim2.new(0, 5),
 				TextColor3 = Color3.fromRGB(40, 150, 255),
-				Font = Enum.Font.GothamBold,
+				Font = Enum.Font.RobotoMono,
 				TextXAlignment = "Left",
 				BackgroundTransparency = 1,
 				TextSize = 10,
@@ -1813,7 +1813,7 @@ function redzlib:MakeWindow(Configs)
 			local LTitle = InsertTheme(Create("TextLabel", FrameHolder, {
 				Size = UDim2.new(1, -52, 0, 15),
 				Position = UDim2.new(0, 44, 0, 7),
-				Font = Enum.Font.GothamBold,
+				Font = Enum.Font.RobotoMono,
 				TextColor3 = Theme["Color Text"],
 				TextXAlignment = "Left",
 				BackgroundTransparency = 1,
@@ -1826,7 +1826,7 @@ function redzlib:MakeWindow(Configs)
 				Position = UDim2.new(0, 44, 0, 22),
 				TextWrapped = "Y",
 				AutomaticSize = "Y",
-				Font = Enum.Font.Gotham,
+				Font = Enum.Font.RobotoMono,
 				TextColor3 = Theme["Color Dark Text"],
 				TextXAlignment = "Left",
 				BackgroundTransparency = 1,
@@ -1839,7 +1839,7 @@ function redzlib:MakeWindow(Configs)
 				AnchorPoint = Vector2.new(0.5, 1),
 				Position = UDim2.new(0.5, 0, 1, -7),
 				Text = "Join",
-				Font = Enum.Font.GothamBold,
+				Font = Enum.Font.RobotoMono,
 				TextSize = 12,
 				TextColor3 = Color3.fromRGB(220, 220, 220),
 				BackgroundColor3 = Color3.fromRGB(50, 150, 50)
