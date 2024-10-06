@@ -756,7 +756,7 @@ function redzlib:MakeWindow(Configs)
 	function Window:CloseBtn()
 		local Dialog = Window:Dialog({
 			Title = "Close",
-			Text = "Are you sure you want to close this script??",
+			Text = "Are you sure you want to close this script?",
 			Options = {
 				{"Confirm", function()
 					ScreenGui:Destroy()
@@ -1623,8 +1623,8 @@ function redzlib:MakeWindow(Configs)
 				Position = UDim2.new(0, 0, 0.5),
 				BackgroundTransparency = 1,
 				TextColor3 = Theme["Color Text"],
-				Font = Enum.Font.FredokaOne,
-				TextSize = 12
+				Font = Enum.Font.RobotoMono,
+				TextSize = 10
 			}), "Text")
 			
 			local UIScale = Create("UIScale", LabelVal)
@@ -1670,10 +1670,7 @@ function redzlib:MakeWindow(Configs)
 			
 			LabelVal:GetPropertyChangedSignal("Text"):Connect(function()
 				UIScale.Scale = 0.3
-				CreateTween({UIScale, "Scale", 1.2, 0.1})
-				CreateTween({LabelVal, "Rotation", math.random(-1, 1) * 5, 0.15, true})
-				CreateTween({UIScale, "Scale", 1, 0.2})
-				CreateTween({LabelVal, "Rotation", 0, 0.1})
+				
 			end)
 			
 			function SetSlider(NewValue)
