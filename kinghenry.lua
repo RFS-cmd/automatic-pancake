@@ -1624,7 +1624,7 @@ function redzlib:MakeWindow(Configs)
 				BackgroundTransparency = 1,
 				TextColor3 = Theme["Color Text"],
 				Font = Enum.Font.RobotoMono,
-				TextSize = 12
+				TextSize = 18
 			}), "Text")
 			
 			local UIScale = Create("UIScale", LabelVal)
